@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import interfaces.ApplePredicate;
+import interfaces.Predicate;
 import models.Apple;
 import utils.Color;
 
@@ -15,23 +15,26 @@ public class App {
                 new Apple(185, Color.RED),
                 new Apple(120, Color.RED));
 
-        var greenApples = filterApples(inventory, (Apple apple) -> apple.getColor().equals(Color.GREEN));
-        var heavrWieghtApples = filterApples(inventory, (Apple apple) -> apple.getWeight() > 150);
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        var greenApples = filter(inventory, (Apple apple) -> apple.getColor().equals(Color.GREEN));
+        var heavrWieghtApples = filter(inventory, (Apple apple) -> apple.getWeight() > 150);
+        var evenNumbers = filter(numbers, (Integer i) -> i % 2 == 0);
 
         System.out.println(greenApples);
         System.out.println(heavrWieghtApples);
+        System.out.println(evenNumbers);
 
     }
 
-    public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) {
-        List<Apple> results = new ArrayList<>();
-        for (Apple apple : inventory) {
-            if (p.test(apple)) {
-                results.add(apple);
+    public static <T> List<T> filter(List<T> list, Predicate<T> p) {
+        List<T> result = new ArrayList<>();
+        for (T e : list) {
+            if (p.test(e)) {
+                result.add(e);
             }
         }
-        return results;
-
+        return result;
     }
 
 }
