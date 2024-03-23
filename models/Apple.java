@@ -1,4 +1,4 @@
-package utils.models;
+package models;
 
 import utils.Color;
 
