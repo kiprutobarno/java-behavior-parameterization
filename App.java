@@ -14,15 +14,15 @@ public class App {
                 new Apple(185, Color.RED),
                 new Apple(120, Color.RED));
 
-        var greenApples = filterGreenApples(inventory);
+        var greenApples = filterGreenApples(inventory, Color.GREEN);
 
         System.out.println(greenApples);
     }
 
-    public static List<Apple> filterGreenApples(List<Apple> inventory) {
+    public static List<Apple> filterGreenApples(List<Apple> inventory, Color color) {
         List<Apple> results = new ArrayList<>();
         for (Apple apple : inventory) {
-            if (apple.getColor().equals(Color.GREEN)) {
+            if (apple.getColor().equals(color)) {
                 results.add(apple);
             }
         }
