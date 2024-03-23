@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import interfaces.ApplePredicate;
 import models.Apple;
+import utils.AppleGreenColorPredicate;
+import utils.AppleHeavyWeightPredicate;
 import utils.Color;
 
 public class App {
@@ -14,18 +17,23 @@ public class App {
                 new Apple(185, Color.RED),
                 new Apple(120, Color.RED));
 
-        var greenApples = filterGreenApples(inventory, Color.GREEN);
+        var greenApples = filterApples(inventory, new AppleGreenColorPredicate());
+        var heavrWieghtApples = filterApples(inventory, new AppleHeavyWeightPredicate());
 
         System.out.println(greenApples);
+        System.out.println(heavrWieghtApples);
+
     }
 
-    public static List<Apple> filterGreenApples(List<Apple> inventory, Color color) {
+    public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) {
         List<Apple> results = new ArrayList<>();
         for (Apple apple : inventory) {
-            if (apple.getColor().equals(color)) {
+            if (p.test(apple)) {
                 results.add(apple);
             }
         }
         return results;
+
     }
+
 }
