@@ -15,16 +15,8 @@ public class App {
                 new Apple(185, Color.RED),
                 new Apple(120, Color.RED));
 
-        var greenApples = filterApples(inventory, new ApplePredicate() {
-            public boolean test(Apple apple) {
-                return apple.getColor().equals(Color.GREEN);
-            }
-        });
-        var heavrWieghtApples = filterApples(inventory, new ApplePredicate() {
-            public boolean test(Apple apple) {
-                return apple.getWeight() > 150;
-            }
-        });
+        var greenApples = filterApples(inventory, (Apple apple) -> apple.getColor().equals(Color.GREEN));
+        var heavrWieghtApples = filterApples(inventory, (Apple apple) -> apple.getWeight() > 150);
 
         System.out.println(greenApples);
         System.out.println(heavrWieghtApples);
