@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import interfaces.Consumer;
 import interfaces.Function;
 import interfaces.Predicate;
 import models.Apple;
-import utils.AppleComparator;
 import utils.Color;
 
 public class App {
@@ -32,7 +32,12 @@ public class App {
 
         forEach(inventory, (Apple a) -> System.out.println(a));
 
-        inventory.sort(new AppleComparator());
+        inventory.sort(new Comparator<Apple>() {
+            public int compare(Apple a, Apple b) {
+                return a.getWeight().compareTo(b.getWeight());
+            }
+        });
+
         System.out.println(inventory);
 
     }
