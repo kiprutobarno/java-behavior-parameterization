@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 import interfaces.Consumer;
@@ -32,11 +31,7 @@ public class App {
 
         forEach(inventory, (Apple a) -> System.out.println(a));
 
-        inventory.sort(new Comparator<Apple>() {
-            public int compare(Apple a, Apple b) {
-                return a.getWeight().compareTo(b.getWeight());
-            }
-        });
+        inventory.sort((Apple a, Apple b) -> a.getWeight().compareTo(b.getWeight()));
 
         System.out.println(inventory);
 
