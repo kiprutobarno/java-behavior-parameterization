@@ -33,7 +33,7 @@ public class App {
 
         forEach(inventory, (Apple a) -> System.out.println(a));
 
-        inventory.sort(comparing(apple -> apple.getWeight()));
+        inventory.sort(comparing(Apple::getWeight));
 
         System.out.println(inventory);
 
