@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import interfaces.Consumer;
 import interfaces.Function;
 import interfaces.Predicate;
 import models.Apple;
@@ -28,6 +29,8 @@ public class App {
         System.out.println(evenNumbers);
         System.out.println(appleWeights);
 
+        forEach(inventory, (Apple a) -> System.out.println(a));
+
     }
 
     public static <T> List<T> filter(List<T> list, Predicate<T> p) {
@@ -46,6 +49,12 @@ public class App {
             result.add(f.apply(t));
         }
         return result;
+    }
+
+    public static <T> void forEach(List<T> list, Consumer<T> c) {
+        for (T t : list) {
+            c.accept(t);
+        }
     }
 
 }
