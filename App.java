@@ -6,6 +6,7 @@ import interfaces.Consumer;
 import interfaces.Function;
 import interfaces.Predicate;
 import models.Apple;
+import utils.AppleComparator;
 import utils.Color;
 
 public class App {
@@ -20,16 +21,19 @@ public class App {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         var greenApples = filter(inventory, (Apple apple) -> apple.getColor().equals(Color.GREEN));
-        var heavrWieghtApples = filter(inventory, (Apple apple) -> apple.getWeight() > 150);
+        var heavyWeightApples = filter(inventory, (Apple apple) -> apple.getWeight() > 150);
         var evenNumbers = filter(numbers, (Integer i) -> i % 2 == 0);
         var appleWeights = map(inventory, (Apple a) -> a.getWeight());
 
         System.out.println(greenApples);
-        System.out.println(heavrWieghtApples);
+        System.out.println(heavyWeightApples);
         System.out.println(evenNumbers);
         System.out.println(appleWeights);
 
         forEach(inventory, (Apple a) -> System.out.println(a));
+
+        inventory.sort(new AppleComparator());
+        System.out.println(inventory);
 
     }
 

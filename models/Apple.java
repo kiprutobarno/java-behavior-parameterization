@@ -3,19 +3,19 @@ package models;
 import utils.Color;
 
 public class Apple {
-    private int weight = 0;
+    private Integer weight = 0;
     private Color color;
 
-    public Apple(int weight, Color color) {
+    public Apple(Integer weight, Color color) {
         this.weight = weight;
         this.color = color;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
