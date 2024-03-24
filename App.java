@@ -1,6 +1,7 @@
+import static java.util.Comparator.comparing;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 import interfaces.Consumer;
@@ -32,7 +33,7 @@ public class App {
 
         forEach(inventory, (Apple a) -> System.out.println(a));
 
-        inventory.sort(Comparator.comparing(apple -> apple.getWeight()));
+        inventory.sort(comparing(apple -> apple.getWeight()));
 
         System.out.println(inventory);
 
