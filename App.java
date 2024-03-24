@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import interfaces.Function;
 import interfaces.Predicate;
 import models.Apple;
 import utils.Color;
@@ -20,10 +21,12 @@ public class App {
         var greenApples = filter(inventory, (Apple apple) -> apple.getColor().equals(Color.GREEN));
         var heavrWieghtApples = filter(inventory, (Apple apple) -> apple.getWeight() > 150);
         var evenNumbers = filter(numbers, (Integer i) -> i % 2 == 0);
+        var appleWeights = map(inventory, (Apple a) -> a.getWeight());
 
         System.out.println(greenApples);
         System.out.println(heavrWieghtApples);
         System.out.println(evenNumbers);
+        System.out.println(appleWeights);
 
     }
 
@@ -33,6 +36,14 @@ public class App {
             if (p.test(e)) {
                 result.add(e);
             }
+        }
+        return result;
+    }
+
+    public static <T, R> List<R> map(List<T> list, Function<T, R> f) {
+        List<R> result = new ArrayList<>();
+        for (T t : list) {
+            result.add(f.apply(t));
         }
         return result;
     }
